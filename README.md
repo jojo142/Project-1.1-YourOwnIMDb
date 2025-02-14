@@ -1,4 +1,7 @@
 # Create Your Own IMDb
+Team Members: 
+1. Samiya Islam
+2. Erica Egleston
 
 ## Overview
 This project is a simple web application similar to IMDb that interacts with a MySQL/MariaDB database. The application features a Flask-based UI that allows users to **view movie and actor details, like movies, and execute SQL queries**.
