@@ -1,14 +1,22 @@
 body {
     font-family: Arial, sans-serif;
     padding: 20px;
-    background-color: #f8f9fa;
+    background: linear-gradient(-0.25turn, #f3c1f0, #dee1e6, #e1bea6);
     color: #333;
 }
 
 h1 {
     text-align: center;
-    color: #333;
-    font-size: 2rem;
+    color: #000000;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 3rem;
+}
+.container {
+    display: row;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 table {
@@ -16,14 +24,14 @@ table {
     margin: 20px auto;
     border-collapse: collapse;
     max-width: 900px;
-    background-color: white;
+    background-color: rgb(217, 123, 123);
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 th {
-    background-color: #007BFF;
+    background-color: #6a3d58;
     color: white;
     padding: 10px;
     text-align: left;
@@ -42,11 +50,12 @@ tr:nth-child(even) {
 
 a {
     text-decoration: none;
-    color: #007BFF;
+    color: #ff00a6;
     margin-top: 20px;
     display: inline-block;
     font-weight: bold;
     transition: color 0.3s ease-in-out;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 a:hover {
@@ -62,7 +71,7 @@ select, button {
 }
 
 button {
-    background-color: #007BFF;
+    background-color: #a200ff;
     color: white;
     border: none;
     cursor: pointer;
