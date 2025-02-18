@@ -4,6 +4,8 @@ Team Members:
 2. Erica Egleston
 
 ![UI Image](static/images/UI.png)
+![Movies Image](static/images/movies.png)
+![Actors Image](static/images/actors.png)
 
 ## Overview
 This project is a simple web application similar to IMDb that interacts with a MySQL/MariaDB database. The application features a Flask-based UI that allows users to **view movie and actor details, like movies, and execute SQL queries**.
