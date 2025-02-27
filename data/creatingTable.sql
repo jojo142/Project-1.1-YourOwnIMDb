@@ -1,4 +1,4 @@
-CREATE TABLE MotionPicture (
+CREATE OR REPLACE TABLE MotionPicture (
     id INT PRIMARY KEY,
     name VARCHAR(255),
     rating DECIMAL(3, 1),
@@ -6,33 +6,33 @@ CREATE TABLE MotionPicture (
     budget INT
 );
 
-CREATE TABLE Users (
+CREATE OR REPLACE TABLE Users (
     email VARCHAR(255) PRIMARY KEY,
     name VARCHAR(255),
     age INT
 );
 
-CREATE TABLE Likes (
+CREATE OR REPLACE TABLE Likes (
     mpid INT,
     uemail VARCHAR(255),
-    FOREIGN KEY (mpid) REFERENCES MotionPicture(id),
-    FOREIGN KEY (uemail) REFERENCES Users(email),
+    FOREIGN KEY (mpid) REFERENCES MotionPicture(id) ON DELETE CASCADE,
+    FOREIGN KEY (uemail) REFERENCES Users(email) ON DELETE CASCADE,
     PRIMARY KEY (mpid, uemail)
 );
 
-CREATE TABLE Movie (
+CREATE OR REPLACE TABLE Movie (
     mpid INT,
     boxoffice_collection INT,
-    FOREIGN KEY (mpid) REFERENCES MotionPicture(id)
+    FOREIGN KEY (mpid) REFERENCES MotionPicture(id) ON DELETE CASCADE
 );
 
-CREATE TABLE Series (
+CREATE or REPLACE TABLE Series (
     mpid INT,
     season_count INT,
-    FOREIGN KEY (mpid) REFERENCES MotionPicture(id)
+    FOREIGN KEY (mpid) REFERENCES MotionPicture(id) ON DELETE CASCADE
 );
 
-CREATE TABLE People (
+CREATE OR REPLACE TABLE People (
     id INT PRIMARY KEY,
     name VARCHAR(255),
     nationality VARCHAR(255),
@@ -40,37 +40,37 @@ CREATE TABLE People (
     gender CHAR(1)
 );
 
-CREATE TABLE Role (
+CREATE OR REPLACE TABLE Role (
     mpid INT,
     pid INT,
     role_name VARCHAR(255),
-    FOREIGN KEY (mpid) REFERENCES MotionPicture(id),
-    FOREIGN KEY (pid) REFERENCES People(id),
+    FOREIGN KEY (mpid) REFERENCES MotionPicture(id) ON DELETE CASCADE,
+    FOREIGN KEY (pid) REFERENCES People(id) ON DELETE CASCADE,
     PRIMARY KEY (mpid, pid)
 );
 
-CREATE TABLE Award (
+CREATE OR REPLACE TABLE Award (
     mpid INT,
     pid INT,
     award_name VARCHAR(255),
     award_year INT,
-    FOREIGN KEY (mpid) REFERENCES MotionPicture(id),
-    FOREIGN KEY (pid) REFERENCES People(id),
+    FOREIGN KEY (mpid) REFERENCES MotionPicture(id) ON DELETE CASCADE,
+    FOREIGN KEY (pid) REFERENCES People(id) ON DELETE CASCADE,
     PRIMARY KEY (mpid, pid, award_name)
 );
 
-CREATE TABLE Genre (
+CREATE OR REPLACE TABLE Genre (
     mpid INT,
     genre_name VARCHAR(255),
-    FOREIGN KEY (mpid) REFERENCES MotionPicture(id),
+    FOREIGN KEY (mpid) REFERENCES MotionPicture(id) ON DELETE CASCADE,
     PRIMARY KEY (mpid, genre_name)
 );
 
-CREATE TABLE Location (
+CREATE OR REPLACE TABLE Location (
     mpid INT,
     zip INT,
     city VARCHAR(255),
     country VARCHAR(255),
-    FOREIGN KEY (mpid) REFERENCES MotionPicture(id),
+    FOREIGN KEY (mpid) REFERENCES MotionPicture(id) ON DELETE CASCADE,
     PRIMARY KEY (mpid, zip)
 );
