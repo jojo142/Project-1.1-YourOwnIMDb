@@ -1,9 +1,9 @@
 CREATE OR REPLACE TABLE MotionPicture (
     id INT PRIMARY KEY,
     name VARCHAR(255),
-    rating DECIMAL(3, 1),
+    rating DECIMAL(3, 1) CHECK (10 >= rating >= 0),
     production VARCHAR(255),
-    budget INT
+    budget INT CHECK (budget > 0)
 );
 
 CREATE OR REPLACE TABLE Users (
@@ -22,13 +22,13 @@ CREATE OR REPLACE TABLE Likes (
 
 CREATE OR REPLACE TABLE Movie (
     mpid INT,
-    boxoffice_collection INT,
+    boxoffice_collection FLOAT CHECK (boxoffice_collection >= 0),
     FOREIGN KEY (mpid) REFERENCES MotionPicture(id) ON DELETE CASCADE
 );
 
 CREATE or REPLACE TABLE Series (
     mpid INT,
-    season_count INT,
+    season_count INT CHECK (season_count >= 1),
     FOREIGN KEY (mpid) REFERENCES MotionPicture(id) ON DELETE CASCADE
 );
 
@@ -46,7 +46,7 @@ CREATE OR REPLACE TABLE Role (
     role_name VARCHAR(255),
     FOREIGN KEY (mpid) REFERENCES MotionPicture(id) ON DELETE CASCADE,
     FOREIGN KEY (pid) REFERENCES People(id) ON DELETE CASCADE,
-    PRIMARY KEY (mpid, pid)
+    PRIMARY KEY (mpid, pid, role_name)
 );
 
 CREATE OR REPLACE TABLE Award (
@@ -56,7 +56,7 @@ CREATE OR REPLACE TABLE Award (
     award_year INT,
     FOREIGN KEY (mpid) REFERENCES MotionPicture(id) ON DELETE CASCADE,
     FOREIGN KEY (pid) REFERENCES People(id) ON DELETE CASCADE,
-    PRIMARY KEY (mpid, pid, award_name)
+    PRIMARY KEY (mpid, pid, award_name, award_year)
 );
 
 CREATE OR REPLACE TABLE Genre (
