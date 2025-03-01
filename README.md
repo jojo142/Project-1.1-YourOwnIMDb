@@ -105,7 +105,7 @@ Use the SQL scripts provided to set up the database.
    mysql -u imdb -p moviedb
    ```
    > **NOTE**: Starting next step, all commands must be run in your MySQL shell inside terminal.
-2. Execute the `creatingTables.sql` commands to create the required tables as per the provided schema and ER-diagram in the project document. Don't forget to run the below command before you start creating tables.
+2. Execute the `creatingTables.sql` command to create the required tables as per the provided schema and ER-diagram in the project document. Don't forget to run the below command before you start creating tables.
    ```sql
    USE moviedb; --- This takes you inside moviedb
    ```
