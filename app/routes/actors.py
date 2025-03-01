@@ -12,7 +12,7 @@ def view_all_actors():
     #              The query should retrieve `name`, `nationality`, `dob`, and `gender`.
 
     query = """ 
-    SELECT id, name, nationality, dob, gender 
+    SELECT UNIQUE name, nationality, dob, gender 
     FROM People 
     JOIN Role ON People.id = Role.pid 
     WHERE Role.role_name = 'Actor';

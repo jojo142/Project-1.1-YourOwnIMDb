@@ -67,7 +67,7 @@ CREATE OR REPLACE TABLE Genre (
 );
 
 CREATE OR REPLACE TABLE Location (
-    mpid INT,
+    mpid INT NOT NULL,
     zip INT,
     city VARCHAR(255),
     country VARCHAR(255),

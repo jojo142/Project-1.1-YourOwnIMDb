@@ -34,6 +34,7 @@ def like_movie():
     """Allow a user to like a movie."""
     user_email = request.form["user_email"]
     movie_id = request.form["movie_id"]
+    print(type(user_email))
 
     # >>>> TODO 2: Write a query to insert a like into the Likes table <<<<
     #              The query should insert `movie_id` and `user_email` into `Likes`.
@@ -44,7 +45,7 @@ def like_movie():
     #    - The role of `commit=True` in saving changes.
 
     query = """ 
-    INSERT INTO Likes (uemail, mpid) 
+    INSERT INTO Likes (mpid, uemail) 
     VALUES (%s, %s);
     """
 
