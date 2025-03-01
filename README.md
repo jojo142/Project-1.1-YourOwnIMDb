@@ -100,12 +100,12 @@ DB_DATABASE=moviedb
 ### **Step 4: Create Required Database Tables**
 Use the SQL scripts provided to set up the database.
 
-1. Open a terminal and start MySQL:
+1. Open a terminal and start MySQL. When prompted, enter the password described by `DB_PASSWORD=` in the `ini.env` file. Run the following command to start MySQL with the configured database:
    ```bash
    mysql -u imdb -p moviedb
    ```
    > **NOTE**: Starting next step, all commands must be run in your MySQL shell inside terminal.
-2. Create required tables as per the provided schema and ER-diagram in project document. Pay attention for required constraints (`CHECK`, `PRIMARY KEY`, `FOREIGN KEY` with `ON DELETE CASCADE`) while creating tables. Don't forget to run the below command before you start creating tables.
+2. Execute the `creatingTables.sql` commands to create the required tables as per the provided schema and ER-diagram in the project document. Don't forget to run the below command before you start creating tables.
    ```sql
    USE moviedb; --- This takes you inside moviedb
    ```
@@ -134,7 +134,7 @@ Once your database is set up and populated with sample data, follow these steps 
    ```
 3. Open a browser and visit:
    ```
-   http://127.0.0.1:5000/
+   http://127.0.0.1:8000/
    ```
 
 ---
