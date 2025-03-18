@@ -3,7 +3,7 @@ CREATE OR REPLACE TABLE MotionPicture (
     name VARCHAR(255),
     rating DECIMAL(3, 1) CHECK (10 >= rating >= 0),
     production VARCHAR(255),
-    budget INT CHECK (budget > 0)
+    budget BIGINT CHECK (budget > 0)
 );
 
 CREATE OR REPLACE TABLE Users (
@@ -24,6 +24,7 @@ CREATE OR REPLACE TABLE Movie (
     mpid INT,
     boxoffice_collection FLOAT CHECK (boxoffice_collection >= 0),
     FOREIGN KEY (mpid) REFERENCES MotionPicture(id) ON DELETE CASCADE
+
 );
 
 CREATE or REPLACE TABLE Series (

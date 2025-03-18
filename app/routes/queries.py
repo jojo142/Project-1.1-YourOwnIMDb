@@ -104,10 +104,43 @@ def youngest_oldest_actors():
         WHERE p.role = 'actor'
         ORDER BY age DESC;
     """
-    result = execute_query(query, [])
-    return render_template('youngest_oldest_actors.html', actors=result)
-
+        
+    with Database() as db:
+        actors = db.execute(query)
+    
+    # Filter out actors with null ages (if any)
+    actors = [actor for actor in actors if actor[1] is not None]
+    if actors:
+        min_age = min(actors, key=lambda x: x[1])[1]
+        max_age = max(actors, key=lambda x: x[1])[1]
+        youngest_actors = [actor for actor in actors if actor[1] == min_age]
+        oldest_actors = [actor for actor in actors if actor[1] == max_age]
+        return render_template(
+            "actors_by_age.html",
+            youngest_actors=youngest_actors,
+            oldest_actors=oldest_actors,
+        )
+    else:
+        return render_template(
+            "actors_by_age.html", youngest_actors=[], oldest_actors=[]
+        )
 # 8. Find the American Producers who had a box office collection of more than or equal to “X” (parameterized) with a budget less than or equal to “Y” (parameterized). List the producer name, movie name, box office collection, and budget.
+@queries_bp.route("/search_producers", methods=["POST"])
+def search_producers():
+    """
+    Search for American producers based on a minimum box office collection and maximum budget.
+    """
+    box_office_min = float(request.form["box_office_min"])
+    budget_max = float(request.form["budget_max"])
+
+    # >>>> TODO 8: Find the American [USA] Producers who had a box office collection of more than or equal to “X” with a budget less than or equal to “Y”. <<<< 
+    #              List the producer `name`, `movie name`, `box office collection` and `budget`.
+
+    query = """ """
+
+    with Database() as db:
+        results = db.execute(query, (box_office_min, budget_max))
+    return render_template("search_producers_results.html", results=results)
 
 # 9. List the people who have played multiple roles in a motion picture where the rating is more than “X” (parameterized). List the person’s and motion picture names, and count the number of roles for that particular picture.
 
