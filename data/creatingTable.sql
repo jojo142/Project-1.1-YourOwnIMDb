@@ -6,7 +6,7 @@ CREATE OR REPLACE TABLE MotionPicture (
     budget BIGINT CHECK (budget > 0)
 );
 
-CREATE OR REPLACE TABLE Users (
+CREATE OR REPLACE TABLE User (
     email VARCHAR(255) PRIMARY KEY,
     name VARCHAR(255),
     age INT
@@ -16,7 +16,7 @@ CREATE OR REPLACE TABLE Likes (
     mpid INT,
     uemail VARCHAR(255),
     FOREIGN KEY (mpid) REFERENCES MotionPicture(id) ON DELETE CASCADE,
-    FOREIGN KEY (uemail) REFERENCES Users(email) ON DELETE CASCADE,
+    FOREIGN KEY (uemail) REFERENCES User(email) ON DELETE CASCADE,
     PRIMARY KEY (mpid, uemail)
 );
 
